@@ -14,12 +14,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { PrimeiroCadastroComponent } from './primeiro-cadastro/primeiro-cadastro.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PrimeiroCadastroComponent
+    PrimeiroCadastroComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
