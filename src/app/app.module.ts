@@ -13,11 +13,13 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { PrimeiroCadastroComponent } from './primeiro-cadastro/primeiro-cadastro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    PrimeiroCadastroComponent
   ],
   imports: [
     BrowserModule,
