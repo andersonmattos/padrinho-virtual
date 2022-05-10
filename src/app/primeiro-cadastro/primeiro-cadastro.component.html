@@ -1,1 +1,26 @@
-<p>primeiro-cadastro works!</p>
+<div class="div-top-margin">
+    <div fxLayout = "column" fxLayoutAlign="center center">
+        <p>Para criar sua conta, preencha os campos abaixo</p>
+    </div>
+</div>
+
+<!--Campos-->
+<div fxLayout = "column" fxLayoutAlign = "center center">
+    <form>    
+        <mat-form-field class="input-field-width" appearance="fill">
+            <mat-label class="label-color">E-mail</mat-label>
+            <input matInput>
+        </mat-form-field>
+    
+        <mat-form-field class="input-field-width" appearance="fill">
+            <mat-label class="label-color">Senha</mat-label>
+            <input type="password" matInput>
+        </mat-form-field>
+    </form>   
+</div>
+
+<!--Botões-->
+<div fxLayout = "row" fxLayoutAlign = "center center" fxLayoutGap = "10px" >    
+    <a mat-raised-button href="/primeiro-cadastro">Criar Conta</a>        
+    <a mat-raised-button href="">Cancelar</a>    
+</div>
