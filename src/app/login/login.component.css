@@ -23,13 +23,8 @@ section {
     width: 100%;
 }
 
-.example-form {
-    margin-left: 25%;
-    margin-right: 25%;    
-}
-  
-.example-full-width {
-    width: 100%;
+.input-field-width {
+    width: 100%;    
 }
 
 .label-color {
