@@ -9,3 +9,8 @@
 .div-top-margin {
     margin-top: 3%;
 }
+
+::placeholder {
+    color: black;
+    opacity: 0.5;
+}
