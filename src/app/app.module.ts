@@ -16,13 +16,15 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { PrimeiroCadastroComponent } from './primeiro-cadastro/primeiro-cadastro.component';
 import { HomeComponent } from './home/home.component';
 import {MatIconModule} from '@angular/material/icon';
+import { CasamentoComponent } from './casamento/casamento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PrimeiroCadastroComponent,
-    HomeComponent
+    HomeComponent,
+    CasamentoComponent
   ],
   imports: [
     BrowserModule,
