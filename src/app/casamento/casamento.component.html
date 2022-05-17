@@ -32,6 +32,9 @@
                             <button mat-button (click)="element.isEdit = !element.isEdit">
                               Edit
                             </button>
+                            <button mat-button (click)="removeRow(element.position)">
+                              Delete
+                            </button>
                           </div>
                           <span *ngSwitchDefault>
                             {{ element[col.key] }}

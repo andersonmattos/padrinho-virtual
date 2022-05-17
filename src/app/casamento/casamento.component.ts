@@ -25,6 +25,10 @@ export class CasamentoComponent implements OnInit {
     const newRow = {"name":"","position":0,"invitees":0, isEdit: true}
     this.dataSource = [newRow, ...this.dataSource];
   }
+
+  removeRow(id: number) {
+    this.dataSource = this.dataSource.filter((u) => u.position !== id);
+  }
 }
 
 export interface Invitees {
