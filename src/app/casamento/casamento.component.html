@@ -1,1 +1,56 @@
-<p>casamento works!</p>
+<div fxLayout = "row" fxLayoutAlign = "space-around">
+    <div class="div-size">
+        <div>
+            <article fxLayout = "row" fxLayoutAlign = "end end">
+                <button mat-button (click)="addRow()">Adicionar convidado</button>
+            </article>
+        </div>
+        <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Noivos">
+                <form>
+                    <p>
+                        <mat-form-field class="field-width" appearance="fill">
+                            <mat-label>Nome do noivo(a)</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field class="field-width" appearance="fill">
+                            <mat-label>Nome do noivo(a)</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </p>
+                </form>
+            </mat-tab>            
+            <mat-tab label="Convidados">                
+                <table mat-table [dataSource]="dataSource" class="table">
+                    <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+                      <th mat-header-cell *matHeaderCellDef>
+                        {{ col.label }}
+                      </th>                      
+                      <td mat-cell *matCellDef="let element">
+                        <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                          <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                            <button mat-button (click)="element.isEdit = !element.isEdit">
+                              Edit
+                            </button>
+                          </div>
+                          <span *ngSwitchDefault>
+                            {{ element[col.key] }}
+                          </span>
+                        </div>
+                        <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+                          <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                            <button mat-button (click)="element.isEdit = !element.isEdit">Done</button>
+                          </div>
+                          <mat-form-field *ngSwitchDefault>
+                            <input [type]="col.type" matInput [(ngModel)]="element[col.key]" />
+                          </mat-form-field>                        
+                        </div>
+                      </td>                      
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                  </table>
+            </mat-tab>                        
+        </mat-tab-group>
+    </div>
+</div>

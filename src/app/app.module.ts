@@ -17,6 +17,10 @@ import { PrimeiroCadastroComponent } from './primeiro-cadastro/primeiro-cadastro
 import { HomeComponent } from './home/home.component';
 import {MatIconModule} from '@angular/material/icon';
 import { CasamentoComponent } from './casamento/casamento.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,10 @@ import { CasamentoComponent } from './casamento/casamento.component';
     MatInputModule,
     MatToolbarModule,
     FlexLayoutModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule,
+    MatTableModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
