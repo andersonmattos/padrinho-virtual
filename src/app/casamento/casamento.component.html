@@ -1,11 +1,12 @@
 <div fxLayout = "row" fxLayoutAlign = "space-around">
     <div class="div-size">
-        <div>
+      <!--ngIf para ocultar mostrar o botão de inserir convidados apenas na aba definida -->
+      <div *ngIf="tabIndex == 1" >
             <article fxLayout = "row" fxLayoutAlign = "end end">
                 <button mat-button (click)="addRow()">Adicionar convidado</button>
             </article>
         </div>
-        <mat-tab-group mat-align-tabs="start">
+        <mat-tab-group mat-align-tabs="start" (selectedTabChange)="tabChanged($event)">
             <mat-tab label="Noivos">
                 <form>
                     <p>

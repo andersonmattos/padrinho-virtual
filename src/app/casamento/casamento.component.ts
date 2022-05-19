@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { MatTabChangeEvent } from '@angular/material/tabs/tab-group';
 
 @Component({
   selector: 'app-casamento',
@@ -16,6 +17,7 @@ export class CasamentoComponent implements OnInit {
   //Origem dos dados
   //dataSource = new MatTableDataSource<Invitees>(ELEMENT_DATA);
   dataSource = ELEMENT_DATA;
+  tabIndex: any = [];
 
   ngOnInit() {
 
@@ -28,6 +30,14 @@ export class CasamentoComponent implements OnInit {
 
   removeRow(id: number) {
     this.dataSource = this.dataSource.filter((u) => u.position !== id);
+  }
+
+  //Método para identificar quando a aba Convidados está selecionada
+  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+    //console.log('tabChangeEvent => ', tabChangeEvent);
+    //console.log('index => ', tabChangeEvent.index);
+    this.tabIndex = tabChangeEvent.index;
+    
   }
 }
 
