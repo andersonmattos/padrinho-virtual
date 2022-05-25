@@ -1,4 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
+
+import { LoginService } from './services/login.service';
+import { UsersInterface } from './interface/users';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  users: UsersInterface[] = [];
+    
+  constructor(private service: LoginService ) { }
 
   ngOnInit(): void {
+    this.service.getUsers().subscribe(usuarios => this.users = usuarios);
   }
 
 }

@@ -20,6 +20,7 @@ import { CasamentoComponent } from './casamento/casamento.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatTabsModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
