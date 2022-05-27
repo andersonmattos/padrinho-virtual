@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { PrimeiroCadastroService } from './services/primeiro-cadastro.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,8 @@ export class PrimeiroCadastroComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: PrimeiroCadastroService
+    private service: PrimeiroCadastroService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -32,10 +34,19 @@ export class PrimeiroCadastroComponent implements OnInit {
     this.service.getUsers().subscribe(usr => this.users = usr);    
   }
 
+  //Adiciona usuário ao arquivo json
   addUser(){
     console.log(this.formCadastro.value.email)
     console.log(this.formCadastro.value.nome)
     console.log(this.formCadastro.value.senha)
+
+    this.http.post<any>(this.path,this.formCadastro.value).subscribe(
+      res => {
+        alert("Cadastro criado com sucesso!");
+        this.formCadastro.reset();
+        this.router.navigate(['']);
+      }
+    )
   }
 
 }
