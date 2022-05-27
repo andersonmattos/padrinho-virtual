@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
-      usuario: [null],
+      email: [null],
       senha: [null]
     });
 
@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
     this.http.get<any>(this.path)
     .subscribe(
       res => {        
-        const user = res.find((a:any)=>{                    
-          return a.nome === this.formLogin.value.usuario && a.senha === this.formLogin.value.senha
+        const user = res.find((a:any)=>{                              
+          return a.email === this.formLogin.value.email && a.senha === this.formLogin.value.senha
         });
         if(user){
           this.formLogin.reset();
@@ -55,5 +55,5 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  
+
 }

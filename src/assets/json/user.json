@@ -1,7 +1,7 @@
 {
     "user":[
-        {"id": 1, "nome": "admin", "senha":"123", "temCasamento":1},
-        {"id": 2, "nome": "user", "senha":"123", "temCasamento":0}
+        {"id": 1, "email": "admin@teste", "nome": "admin", "senha":"123", "temCasamento":1},
+        {"id": 2, "email": "user@teste", "nome": "user", "senha":"123", "temCasamento":0}
     ],
     
     "casamento":[
