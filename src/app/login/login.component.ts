@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       senha: [null]
     });
 
-    this.service.getUsers().subscribe(usuarios => this.users = usuarios);
+    this.service.getUsers().subscribe(usuarios => this.users = usuarios);    
     
   }
 

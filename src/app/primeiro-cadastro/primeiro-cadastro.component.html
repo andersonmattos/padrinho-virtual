@@ -6,26 +6,28 @@
 
 <!--Campos-->
 <div fxLayout = "column" fxLayoutAlign = "center center">
-    <form>    
+    <form [formGroup]="formCadastro" (ngSubmit)="addUser()" >    
         <mat-form-field class="input-field-width" appearance="fill">
             <mat-label class="label-color">E-mail</mat-label>
-            <input matInput placeholder="Insira o endereço de e-mail">
+            <input formControlName="email" matInput placeholder="Insira o endereço de e-mail">
         </mat-form-field>
 
         <mat-form-field class="input-field-width" appearance="fill">
             <mat-label class="label-color">Nome</mat-label>
-            <input matInput placeholder="Insira seu primeiro nome">
+            <input formControlName="nome" matInput placeholder="Insira seu primeiro nome">
         </mat-form-field>
     
         <mat-form-field class="input-field-width" appearance="fill">
             <mat-label class="label-color">Senha</mat-label>
-            <input type="password" matInput placeholder="Defina sua senha">
+            <input formControlName="senha" type="password" matInput placeholder="Defina sua senha">
         </mat-form-field>
+
+        <!--Botões-->
+        <div fxLayout = "row" fxLayoutAlign = "center center" fxLayoutGap = "10px" >    
+            <button type="submit" mat-raised-button >Criar Conta</button>        
+            <a mat-raised-button href="">Cancelar</a>    
+        </div>
     </form>   
 </div>
 
-<!--Botões-->
-<div fxLayout = "row" fxLayoutAlign = "center center" fxLayoutGap = "10px" >    
-    <a mat-raised-button href="/home">Criar Conta</a>        
-    <a mat-raised-button href="">Cancelar</a>    
-</div>
+
