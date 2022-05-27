@@ -1,6 +1,7 @@
 import { UsersInterface } from '../interface/users';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
-    return this.http.get<UsersInterface[]>(this.path);
+    return this.http.get<UsersInterface[]>(this.path)      
   }
 
 }
