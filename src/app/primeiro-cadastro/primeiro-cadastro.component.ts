@@ -28,7 +28,8 @@ export class PrimeiroCadastroComponent implements OnInit {
     this.formCadastro = this.formBuilder.group({
       email: [null],
       nome: [null],
-      senha: [null]
+      senha: [null],
+      temCasamento: 0
     });
    
     this.service.getUsers().subscribe(usr => this.users = usr);    
@@ -42,6 +43,7 @@ export class PrimeiroCadastroComponent implements OnInit {
 
     this.http.post<any>(this.path,this.formCadastro.value).subscribe(
       res => {
+        
         alert("Cadastro criado com sucesso!");
         this.formCadastro.reset();
         this.router.navigate(['']);
