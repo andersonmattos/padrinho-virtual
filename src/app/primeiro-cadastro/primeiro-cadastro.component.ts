@@ -37,10 +37,7 @@ export class PrimeiroCadastroComponent implements OnInit {
 
   //Adiciona usuário ao arquivo json
   addUser(){
-    console.log(this.formCadastro.value.email)
-    console.log(this.formCadastro.value.nome)
-    console.log(this.formCadastro.value.senha)
-
+    
     this.http.post<any>(this.path,this.formCadastro.value).subscribe(
       res => {
         

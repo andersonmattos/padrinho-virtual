@@ -3,6 +3,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatTabChangeEvent } from '@angular/material/tabs/tab-group';
 
+import { LoginComponent } from './../login/login.component';
+
+
 @Component({
   selector: 'app-casamento',
   templateUrl: './casamento.component.html',
@@ -18,6 +21,8 @@ export class CasamentoComponent implements OnInit {
   //dataSource = new MatTableDataSource<Invitees>(ELEMENT_DATA);
   dataSource = ELEMENT_DATA;
   tabIndex: any = [];
+  
+  constructor (private loggedUser: LoginComponent) {}
 
   ngOnInit() {
 
@@ -38,6 +43,10 @@ export class CasamentoComponent implements OnInit {
     //console.log('index => ', tabChangeEvent.index);
     this.tabIndex = tabChangeEvent.index;
     
+  }
+
+  saveChanges(){
+    console.log(this.loggedUser)
   }
 }
 

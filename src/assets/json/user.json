@@ -14,17 +14,11 @@
       "senha": "123",
       "temCasamento": 0
     }
-  ],
+  ],  
   "casamento": [
     {
       "id": 1,
-      "idUser": 1
-    }
-  ],
-  "noivos": [
-    {
-      "id": 1,
-      "idCasamento": 1,
+      "idUser": 1,      
       "noivo1": "Noivo A",
       "noivo2": "Noivo B"
     }
@@ -32,37 +26,37 @@
   "convidados": [
     {
       "id": 1,
-      "idCasamento": 1,
+      "idUser": 1,
       "nome": "Convidado A",
       "quantidade": 1
     },
     {
-      "id": 1,
-      "idCasamento": 1,
+      "id": 2,
+      "idUser": 1,
       "nome": "Convidado B",
       "quantidade": 2
     },
     {
-      "id": 1,
-      "idCasamento": 1,
+      "id": 3,
+      "idUser": 1,
       "nome": "Convidado C",
       "quantidade": 3
     },
     {
-      "id": 1,
-      "idCasamento": 1,
+      "id": 4,
+      "idUser": 1,
       "nome": "Convidado D",
       "quantidade": 4
     },
     {
-      "id": 1,
-      "idCasamento": 1,
+      "id": 5,
+      "idUser": 1,
       "nome": "Convidado E",
       "quantidade": 5
     },
     {
-      "id": 1,
-      "idCasamento": 1,
+      "id": 6,
+      "idUser": 1,
       "nome": "Convidado F",
       "quantidade": 6
     }
