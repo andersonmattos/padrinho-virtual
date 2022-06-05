@@ -9,7 +9,7 @@ import { CasamentoComponent } from './casamento/casamento.component';
 const routes: Routes = [
   { path:'', component: LoginComponent},
   { path:'primeiro-cadastro', component: PrimeiroCadastroComponent},
-  { path:'home', component: HomeComponent},
+  { path:'home/:userId', component: HomeComponent},
   { path:'casamento', component: CasamentoComponent}
 ];
 

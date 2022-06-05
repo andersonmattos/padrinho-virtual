@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   users: UsersInterface[] = [];
   formLogin: FormGroup = new FormGroup({});
   path: string = "http://localhost:3000/user";
+  userId: string = '';
   
     
   constructor(
@@ -41,12 +42,13 @@ export class LoginComponent implements OnInit {
     this.http.get<any>(this.path)
     .subscribe(
       res => {        
-        const user = res.find((a:any)=>{                              
-          return a.email === this.formLogin.value.email && a.senha === this.formLogin.value.senha
+        const user = res.find((a:any)=>{
+          this.userId = a.id;                              
+          return a.email === this.formLogin.value.email && a.senha === this.formLogin.value.senha          
         });
         if(user){
-          this.formLogin.reset();
-          this.router.navigate(['/home']);
+          this.formLogin.reset();          
+          this.router.navigate(['/home/',this.userId]);
         }else{
           alert("Login ou senha inválidos");
           this.formLogin.reset();
