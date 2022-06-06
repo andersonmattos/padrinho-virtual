@@ -3,7 +3,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatTabChangeEvent } from '@angular/material/tabs/tab-group';
 
+
 import { LoginComponent } from './../login/login.component';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,15 +19,24 @@ export class CasamentoComponent implements OnInit {
   //displayedColumns: string[] = ['position','name', 'invitees', 'edit', 'delete',];
   displayedColumns: string[] = COLUMNS_SCHEMA.map((col)=>col.key);;
   columnsSchema: any = COLUMNS_SCHEMA;
+
   //Origem dos dados
   //dataSource = new MatTableDataSource<Invitees>(ELEMENT_DATA);
   dataSource = ELEMENT_DATA;
   tabIndex: any = [];
-  
-  constructor (private loggedUser: LoginComponent) {}
+
+  //Variáveis locais
+  userId: string = '';
+
+  constructor (
+    private loggedUser: LoginComponent
+    , private router: ActivatedRoute
+    ) {
+      this.userId = this.router.snapshot.params['id'];       
+    }
 
   ngOnInit() {
-
+    console.log(this.userId);
   }
 
   addRow() {
