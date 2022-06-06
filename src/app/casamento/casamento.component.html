@@ -1,5 +1,8 @@
 <div fxLayout = "row" fxLayoutAlign = "space-around">  
     <div class="div-size">
+      <button mat-icon-button (click)="onClickHome()" >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
       <!--ngIf para ocultar mostrar o botão de inserir convidados apenas na aba definida -->
       <div *ngIf="tabIndex == 1" >
             <article fxLayout = "row" fxLayoutAlign = "end end">

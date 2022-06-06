@@ -5,7 +5,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs/tab-group';
 
 
 import { LoginComponent } from './../login/login.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -26,11 +26,13 @@ export class CasamentoComponent implements OnInit {
   tabIndex: any = [];
 
   //Variáveis locais
-  userId: string = '';
+  userId: string = '';  
+  rootPath: string = '/home/';
 
   constructor (
     private loggedUser: LoginComponent
     , private router: ActivatedRoute
+    , private route: Router
     ) {
       this.userId = this.router.snapshot.params['id'];       
     }
@@ -59,6 +61,12 @@ export class CasamentoComponent implements OnInit {
   saveChanges(){
     console.log(this.loggedUser)
   }
+
+  onClickHome() {
+    this.userId = this.router.snapshot.params['userId'];    
+    this.route.navigate([this.rootPath, this.userId])
+  }
+
 }
 
 export interface Invitees {
