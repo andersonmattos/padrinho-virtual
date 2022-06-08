@@ -1,3 +1,5 @@
+import { CasamentoInterface } from './interface/casamento';
+import { CasamentoService } from './services/casamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -6,6 +8,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs/tab-group';
 
 import { LoginComponent } from './../login/login.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -28,17 +31,32 @@ export class CasamentoComponent implements OnInit {
   //Variáveis locais
   userId: string = '';  
   rootPath: string = '/home/';
+  formNoivos: FormGroup = new FormGroup({});
+  noivo1: CasamentoInterface[] = [];
+  noivo2: CasamentoInterface[] = [];
 
   constructor (
     private loggedUser: LoginComponent
     , private router: ActivatedRoute
     , private route: Router
+    , private formBuilder: FormBuilder
+    , private service: CasamentoService
     ) {
-      this.userId = this.router.snapshot.params['id'];       
+      this.userId = this.router.snapshot.params['userId'];       
     }
 
-  ngOnInit() {
-    console.log(this.userId);
+  ngOnInit() {    
+    console.log('ngOnInit - Casamento Component: ' + this.userId);
+
+    this.formNoivos = this.formBuilder.group({
+      noivo1: [null],
+      noivo2: [null]
+    });
+    
+    this.service.getPartnerName(this.userId).subscribe(
+     (a:any) => {this.noivo1 = a.noivo1; this.noivo2 = a.noivo2}
+    )
+    
   }
 
   addRow() {

@@ -11,15 +11,15 @@
       </div>
         <mat-tab-group mat-align-tabs="start" (selectedTabChange)="tabChanged($event)">
             <mat-tab label="Noivos">
-                <form (ngSubmit)="saveChanges()" >
+                <form [formGroup]="formNoivos" (ngSubmit)="saveChanges()" >
                     <p>
                         <mat-form-field class="field-width" appearance="fill">
                             <mat-label>Nome do noivo(a)</mat-label>
-                            <input matInput>
+                            <input matInput value = "{{noivo1}}">
                         </mat-form-field>
                         <mat-form-field class="field-width" appearance="fill">
                             <mat-label>Nome do noivo(a)</mat-label>
-                            <input matInput>
+                            <input matInput value = "{{noivo2}}">
                         </mat-form-field>
 
                         <button mat-raised-button>Salvar</button>
