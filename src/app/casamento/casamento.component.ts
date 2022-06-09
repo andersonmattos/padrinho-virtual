@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-casamento',
   templateUrl: './casamento.component.html',
@@ -26,14 +27,18 @@ export class CasamentoComponent implements OnInit {
   //Origem dos dados
   //dataSource = new MatTableDataSource<Invitees>(ELEMENT_DATA);
   dataSource = ELEMENT_DATA;
-  tabIndex: any = [];
+  
 
   //Variáveis locais
   userId: string = '';  
   rootPath: string = '/home/';
-  formNoivos: FormGroup = new FormGroup({});
+  formPartner1: FormGroup = new FormGroup({});
+  formPartner2: FormGroup = new FormGroup({});
   noivo1: CasamentoInterface[] = [];
   noivo2: CasamentoInterface[] = [];
+  tabIndex: any = [];
+  hadChange1: boolean = false;
+  hadChange2: boolean = false;
 
   constructor (
     private loggedUser: LoginComponent
@@ -48,9 +53,12 @@ export class CasamentoComponent implements OnInit {
   ngOnInit() {    
     console.log('ngOnInit - Casamento Component: ' + this.userId);
 
-    this.formNoivos = this.formBuilder.group({
-      noivo1: [null],
-      noivo2: [null]
+    this.formPartner1 = this.formBuilder.group({
+      noivo1: [null]      
+    });
+
+    this.formPartner2 = this.formBuilder.group({
+      noivo2: [null]      
     });
     
     this.service.getPartnerName(this.userId).subscribe(
@@ -77,12 +85,37 @@ export class CasamentoComponent implements OnInit {
   }
 
   saveChanges(){
-    console.log(this.loggedUser)
+    console.log('Iniciando saveChanges() on casamento.component.ts')
+    console.log(this.formPartner1.value)
+    console.log(this.formPartner2.value)
+    
+    //debugger
+
+    if(this.hadChange1 != false || this.hadChange2 != false){      
+      if(this.hadChange1 != false){
+        this.service.updatePartnerName(this.userId,this.formPartner1)        
+      }
+
+      if(this.hadChange2 != false){
+        this.service.updatePartnerName(this.userId,this.formPartner2)        
+      }
+      alert("Atualizado com sucesso!"); 
+    }
+    
+    //this.service.updatePartnerName(this.userId,this.formNoivos)
   }
 
   onClickHome() {
     this.userId = this.router.snapshot.params['userId'];    
     this.route.navigate([this.rootPath, this.userId])
+  }
+
+  onChangePartner1() {
+    this.hadChange1 = true;
+  }
+
+  onChangePartner2() {
+    this.hadChange2 = true;
   }
 
 }
