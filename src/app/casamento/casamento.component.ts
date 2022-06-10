@@ -1,3 +1,4 @@
+import { ConvidadosService } from './../convidados/services/convidados.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -35,6 +36,7 @@ export class CasamentoComponent implements OnInit {
   inviteePath: string = 'http://localhost:3000/convidados/';
   formPartner1: FormGroup = new FormGroup({});
   formPartner2: FormGroup = new FormGroup({});
+  formPatchInvitees: FormGroup = new FormGroup({});
   noivo1: CasamentoInterface[] = [];
   noivo2: CasamentoInterface[] = [];
   tabIndex: any = [];
@@ -49,6 +51,7 @@ export class CasamentoComponent implements OnInit {
     , private route: Router
     , private formBuilder: FormBuilder
     , private service: CasamentoService
+    , private InviteeService: ConvidadosService
     ) {
       this.userId = this.router.snapshot.params['userId'];       
     }
@@ -132,6 +135,19 @@ export class CasamentoComponent implements OnInit {
 
   onChangePartner2() {
     this.hadChange2 = true;
+  }
+
+  onEditConvidado(id: number, nome: string, quantidade: number) {
+        
+    this.formPatchInvitees = this.formBuilder.group({
+      idCasamento: id,
+      nome: nome,
+      quantidade: quantidade
+    })
+    
+    this.InviteeService.patchConvidadoById(id.toString(), this.formPatchInvitees).subscribe()
+    alert('Atualizado com sucesso')
+
   }
 
 }
