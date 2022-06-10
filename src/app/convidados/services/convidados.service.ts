@@ -17,4 +17,8 @@ export class ConvidadosService {
     return this.http.patch<any>(this.inviteePath+convidadoId,form.value)
   }
 
+  deleteConvidadoById(convidadoId:string){
+    return this.http.delete<any>(this.inviteePath+convidadoId)
+  }
+
 }

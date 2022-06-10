@@ -93,6 +93,8 @@ export class CasamentoComponent implements OnInit {
 
   removeRow(id: number) {
     //debugger
+    this.InviteeService.deleteConvidadoById(id.toString()).subscribe();
+    alert('Deletado com sucesso');    
     this.dataSource = this.dataSource.filter((u:any) => u.id !== id);
   }
 
