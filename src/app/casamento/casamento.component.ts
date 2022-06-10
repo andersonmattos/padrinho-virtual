@@ -81,9 +81,9 @@ export class CasamentoComponent implements OnInit {
     )    
   }
 
-  addRow() {
+  addRow() {    
     const newRow = {"id":0,"idCasamento":0,"nome":"","quantidade":0, isEdit: true}
-    this.dataSource = [newRow, ...this.dataSource];
+    this.dataSource = [newRow, ...this.dataSource];    
   }
 
   removeRow(id: number) {

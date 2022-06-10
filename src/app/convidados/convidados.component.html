@@ -1,0 +1,25 @@
+<div fxLayout="column" fxLayoutAlign="space-around center">
+    <form (ngSubmit)="onSubmit()" class="positioning">
+        <form [formGroup]="formConvidadosNome">      
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Nome</mat-label>
+                    <input formControlName="nome" matInput (change)="onChangeNome()">
+                </mat-form-field>
+            </p>
+        </form>
+        <form [formGroup]="formConvidadosQuantidade"> 
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Quantidade de convidados</mat-label>
+                    <input formControlName="quantidade" matInput (change)="onChangeQuantidade()">
+                </mat-form-field>
+            </p>
+        </form>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class = "example-button-row">
+            <button type="submit" matButton mat-raised-button >Salvar</button>
+            <button matButton mat-raised-button>Cancelar</button>
+        </div>
+    </form>
+    
+</div>

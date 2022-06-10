@@ -21,6 +21,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ConvidadosComponent } from './convidados/convidados.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     PrimeiroCadastroComponent,
     HomeComponent,
-    CasamentoComponent
+    CasamentoComponent,
+    ConvidadosComponent
   ],
   imports: [
     BrowserModule,

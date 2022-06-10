@@ -42,4 +42,8 @@ export class CasamentoService {
     return this.http.get<any>(this.userPath+userId)
   }
 
+  addInviteeByCasamento(idCasamento:string){
+    console.log('Usando método addInvitee do service Casamento');   
+  }
+
 }
