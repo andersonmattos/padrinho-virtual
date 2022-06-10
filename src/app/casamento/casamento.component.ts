@@ -84,8 +84,6 @@ export class CasamentoComponent implements OnInit {
 
   addRow() {
     this.route.navigate(['/convidado'],{queryParams: {idCasamento:this.casamento}})
-    console.log('/convidado?idCasamento='+this.casamento)
-    
     /*const newRow = {"id":0,"idCasamento":0,"nome":"","quantidade":0, isEdit: true}
     this.dataSource = [newRow, ...this.dataSource];    */
   }
