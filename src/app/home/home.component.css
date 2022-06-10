@@ -1,5 +1,12 @@
 .button-size{
     max-width: 300px;
     width: 100%;
-    
+}
+
+.mat-raised-button{
+    width: 300%;    
+}
+
+.padding{
+    padding-top: 5%;
 }

@@ -15,8 +15,9 @@ export class CasamentoService {
   constructor(private http: HttpClient) { }
 
   getPartnerName(id:string){
-    console.log('Usando método getPartnerName do service Casamento');
-    console.log('Valor do path: '+this.path+id);
+    console.log('getPartnerName - CasamentoService');
+    console.log('Valor do path:')
+    console.log(this.path+id);
     return this.http.get<any>(this.path+id);
   }
 
@@ -39,11 +40,31 @@ export class CasamentoService {
 
   getCasamentoId(userId:string){
     console.log('Método getCasamentoId: ')
-    return this.http.get<any>(this.userPath+userId)
+    //return this.http.get<any>(this.userPath+userId)
+    return this.http.get<any>(this.path+userId)
   }
 
   addInviteeByCasamento(idCasamento:string){
     console.log('Usando método addInvitee do service Casamento');   
+  }
+
+  addCasamento(formNewCasamento: FormGroup){    
+    return this.http.post<any>(this.path, formNewCasamento.value)
+  }
+
+  patchUserCasamentoStatus(userId: string, form: FormGroup){
+    console.log(form.value)
+    return this.http.patch<any>(this.userPath+userId, form.value )
+  }
+  
+  getCasamentoByUserId(casamentoId:string){
+    console.log('getCasamentoByUserId')
+    this.http.get<any>(this.path+casamentoId).subscribe(
+      (res:any)=>{
+        const id = res.idUser
+        console.log(id)        
+      }
+    )
   }
 
 }

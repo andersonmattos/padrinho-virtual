@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ConvidadosService } from './../convidados/services/convidados.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
@@ -32,6 +33,7 @@ export class CasamentoComponent implements OnInit {
 
   //Variáveis locais
   userId: string = '';  
+  casamentoId: string = '';  
   rootPath: string = '/home/';
   inviteePath: string = 'http://localhost:3000/convidados/';
   formPartner1: FormGroup = new FormGroup({});
@@ -52,12 +54,14 @@ export class CasamentoComponent implements OnInit {
     , private formBuilder: FormBuilder
     , private service: CasamentoService
     , private InviteeService: ConvidadosService
+    , private http:HttpClient
     ) {
-      this.userId = this.router.snapshot.params['userId'];       
+      this.userId = this.router.snapshot.params['userId'];
+      this.casamentoId = this.router.snapshot.params['userId'];
     }
 
   ngOnInit() {    
-    console.log('ngOnInit - Casamento Component: ' + this.userId);
+    console.log('ngOnInit - Casamento Component');
 
     this.formPartner1 = this.formBuilder.group({
       noivo1: [null]      
@@ -82,7 +86,11 @@ export class CasamentoComponent implements OnInit {
               //console.log(this.dataSource.filteredData)
           }))    
        }
-    )    
+    )  
+    
+    this.http.get<any>('http://localhost:3000/casamento/'+this.casamentoId).subscribe(
+      res => {this.userId = res.idUser}
+    )
   }
 
   addRow() {
@@ -127,8 +135,15 @@ export class CasamentoComponent implements OnInit {
   }
 
   onClickHome() {
-    this.userId = this.router.snapshot.params['userId'];    
-    this.route.navigate([this.rootPath, this.userId])
+    console.log('onClickHome - Casamento Component');
+    console.log(this.casamentoId);
+    //this.casamentoId = this.router.snapshot.params['userId']; 
+    /*this.service.getPartnerName(this.casamentoId).subscribe(
+      res => {this.userId = JSON.parse(res.idUser)}
+    ) */
+    //this.service.getCasamentoByUserId(this.casamentoId)      
+    console.log(this.rootPath+this.userId)
+    this.route.navigate([this.rootPath,this.userId])
   }
 
   onChangePartner1() {
@@ -150,6 +165,13 @@ export class CasamentoComponent implements OnInit {
     this.InviteeService.patchConvidadoById(id.toString(), this.formPatchInvitees).subscribe()
     alert('Atualizado com sucesso')
 
+  }
+
+  navigate(userId:string){
+    console.log('navigate - CasamentoComponent')
+    console.log('userId')
+    console.log(userId)
+    this.route.navigate([this.rootPath+userId])
   }
 
 }
