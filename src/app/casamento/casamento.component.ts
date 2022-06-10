@@ -1,5 +1,3 @@
-import { CasamentoInterface } from './interface/casamento';
-import { CasamentoService } from './services/casamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -9,6 +7,9 @@ import { MatTabChangeEvent } from '@angular/material/tabs/tab-group';
 import { LoginComponent } from './../login/login.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { InviteeInterface } from './interface/invitee';
+import { CasamentoInterface } from './interface/casamento';
+import { CasamentoService } from './services/casamento.service';
 
 
 
@@ -26,8 +27,7 @@ export class CasamentoComponent implements OnInit {
 
   //Origem dos dados
   //dataSource = new MatTableDataSource<Invitees>(ELEMENT_DATA);
-  dataSource = ELEMENT_DATA;
-  
+  //dataSource = ELEMENT_DATA;
 
   //Variáveis locais
   userId: string = '';  
@@ -39,6 +39,8 @@ export class CasamentoComponent implements OnInit {
   tabIndex: any = [];
   hadChange1: boolean = false;
   hadChange2: boolean = false;
+  dataSource: any;
+  casamento: string = '';
 
   constructor (
     private loggedUser: LoginComponent
@@ -64,6 +66,18 @@ export class CasamentoComponent implements OnInit {
     this.service.getPartnerName(this.userId).subscribe(
      (a:any) => {this.noivo1 = a.noivo1; this.noivo2 = a.noivo2}
     )
+
+    this.service.getCasamentoId(this.userId).subscribe(
+      res => {
+        //debugger
+        this.casamento = res.idCasamento
+          this.service.getInviteesByCasamentoId(this.casamento).subscribe(
+            (invitee => {
+              this.dataSource = new MatTableDataSource(invitee)
+              console.log(this.dataSource.filteredData)
+          }))    
+       }
+    )
     
   }
 
@@ -73,7 +87,7 @@ export class CasamentoComponent implements OnInit {
   }
 
   removeRow(id: number) {
-    this.dataSource = this.dataSource.filter((u) => u.position !== id);
+    this.dataSource = this.dataSource.filter((u:any) => u.position !== id);
   }
 
   //Método para identificar quando a aba Convidados está selecionada
@@ -101,8 +115,7 @@ export class CasamentoComponent implements OnInit {
       }
       alert("Atualizado com sucesso!"); 
     }
-    
-    //this.service.updatePartnerName(this.userId,this.formNoivos)
+
   }
 
   onClickHome() {
@@ -138,19 +151,19 @@ const ELEMENT_DATA: Invitees[] = [
 
 const COLUMNS_SCHEMA = [
   {
-    key: "position",
+    key: "id",
     type: "number",
     label: "Id"
+  },    
+  {
+    key: "nome",
+    type: "string",
+    label: "Nome convidado"
   },
   {
-    key: "name",
-    type: "string",
-    label: "Nome"
-  },  
-  {
-    key: "invitees",
+    key: "quantidade",
     type: "number",
-    label: "Número de convidados"
+    label: "Quantidade convidados"
   },
   {
     key: "isEdit",

@@ -5,14 +5,16 @@
       "email": "admin@teste",
       "nome": "admin",
       "senha": "123",
-      "temCasamento": 1
+      "temCasamento": 1,
+      "idCasamento": 1
     },
     {
       "id": 2,
       "email": "user@teste",
       "nome": "user",
       "senha": "123",
-      "temCasamento": 0
+      "temCasamento": 0,
+      "idCasamento": 0
     }
   ],
   "casamento": [
@@ -26,37 +28,37 @@
   "convidados": [
     {
       "id": 1,
-      "idUser": 1,
+      "idCasamento": 1,
       "nome": "Convidado A",
       "quantidade": 1
     },
     {
       "id": 2,
-      "idUser": 1,
+      "idCasamento": 1,
       "nome": "Convidado B",
       "quantidade": 2
     },
     {
       "id": 3,
-      "idUser": 1,
+      "idCasamento": 1,
       "nome": "Convidado C",
       "quantidade": 3
     },
     {
       "id": 4,
-      "idUser": 1,
+      "idCasamento": 1,
       "nome": "Convidado D",
       "quantidade": 4
     },
     {
       "id": 5,
-      "idUser": 1,
+      "idCasamento": 1,
       "nome": "Convidado E",
       "quantidade": 5
     },
     {
       "id": 6,
-      "idUser": 1,
+      "idCasamento": 1,
       "nome": "Convidado F",
       "quantidade": 6
     }

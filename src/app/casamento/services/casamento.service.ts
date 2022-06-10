@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class CasamentoService {
 
   private readonly path ='http://localhost:3000/casamento/';
+  private readonly inviteePath ='http://localhost:3000/convidados?idCasamento=';
+  private readonly userPath ='http://localhost:3000/user/';
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +31,15 @@ export class CasamentoService {
                        
       }
     )
+  }
+
+  getInviteesByCasamentoId(casamentoId:string) {    
+    return this.http.get<any>(this.inviteePath+casamentoId)
+  }
+
+  getCasamentoId(userId:string){
+    console.log('Método getCasamentoId: ')
+    return this.http.get<any>(this.userPath+userId)
   }
 
 }
