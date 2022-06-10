@@ -39,7 +39,7 @@ export class CasamentoComponent implements OnInit {
   tabIndex: any = [];
   hadChange1: boolean = false;
   hadChange2: boolean = false;
-  dataSource: any;
+  dataSource: InviteeInterface[] = [];
   casamento: string = '';
 
   constructor (
@@ -71,23 +71,24 @@ export class CasamentoComponent implements OnInit {
       res => {
         //debugger
         this.casamento = res.idCasamento
-          this.service.getInviteesByCasamentoId(this.casamento).subscribe(
+        this.service.getInviteesByCasamentoId(this.casamento).subscribe(
             (invitee => {
-              this.dataSource = new MatTableDataSource(invitee)
-              console.log(this.dataSource.filteredData)
+              this.dataSource = invitee
+              //this.dataSource = new MatTableDataSource<InviteeInterface[]>(invitee)
+              //console.log(this.dataSource.filteredData)
           }))    
        }
-    )
-    
+    )    
   }
 
   addRow() {
-    const newRow = {"name":"","position":0,"invitees":0, isEdit: true}
+    const newRow = {"id":0,"idCasamento":0,"nome":"","quantidade":0, isEdit: true}
     this.dataSource = [newRow, ...this.dataSource];
   }
 
   removeRow(id: number) {
-    this.dataSource = this.dataSource.filter((u:any) => u.position !== id);
+    //debugger
+    this.dataSource = this.dataSource.filter((u:any) => u.id !== id);
   }
 
   //Método para identificar quando a aba Convidados está selecionada
