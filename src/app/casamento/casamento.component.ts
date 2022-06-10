@@ -32,6 +32,7 @@ export class CasamentoComponent implements OnInit {
   //Variáveis locais
   userId: string = '';  
   rootPath: string = '/home/';
+  inviteePath: string = 'http://localhost:3000/convidados/';
   formPartner1: FormGroup = new FormGroup({});
   formPartner2: FormGroup = new FormGroup({});
   noivo1: CasamentoInterface[] = [];
@@ -81,9 +82,12 @@ export class CasamentoComponent implements OnInit {
     )    
   }
 
-  addRow() {    
-    const newRow = {"id":0,"idCasamento":0,"nome":"","quantidade":0, isEdit: true}
-    this.dataSource = [newRow, ...this.dataSource];    
+  addRow() {
+    this.route.navigate(['/convidado'],{queryParams: {idCasamento:this.casamento}})
+    console.log('/convidado?idCasamento='+this.casamento)
+    
+    /*const newRow = {"id":0,"idCasamento":0,"nome":"","quantidade":0, isEdit: true}
+    this.dataSource = [newRow, ...this.dataSource];    */
   }
 
   removeRow(id: number) {

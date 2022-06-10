@@ -12,7 +12,10 @@ const routes: Routes = [
   { path:'primeiro-cadastro', component: PrimeiroCadastroComponent},
   { path:'home/:userId', component: HomeComponent},
   { path:'casamento/:userId', component: CasamentoComponent},
-  { path:'convidado/:inviteeId', component: ConvidadosComponent}
+  //{ path:'convidado?idCasamento=:idCasamento&:id', component: ConvidadosComponent},
+  { path:'convidado', component: ConvidadosComponent},
+  //{ path:'convidado/:inviteeId', component: ConvidadosComponent},
+  
 ];
 
 @NgModule({

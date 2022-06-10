@@ -2,6 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-convidados',
@@ -16,13 +17,14 @@ export class ConvidadosComponent implements OnInit {
   hadChangeNome: boolean = false;
   hadChangeQuantidade: boolean = false;
   convidadoId: string ='';
+  casamentoId: string ='';
 
   constructor(
     private formBuilder: FormBuilder
     , private route: Router
     , private router: ActivatedRoute
     ) {
-    this.convidadoId = this.router.snapshot.params['inviteeId']
+    this.convidadoId = this.router.snapshot.params['inviteeId']    
    }
 
   ngOnInit(): void {
@@ -30,11 +32,17 @@ export class ConvidadosComponent implements OnInit {
 
     this.formConvidadosNome = this.formBuilder.group({      
       nome: [null]      
-    })
+    });
 
     this.formConvidadosQuantidade = this.formBuilder.group({      
       quantidade: [null]      
-    })
+    });    
+
+    this.router.queryParams.subscribe(
+      (queryParams:any) => {        
+        this.casamentoId = queryParams['idCasamento'];
+      }      
+    );
   }
 
   onSubmit() {
@@ -60,6 +68,10 @@ export class ConvidadosComponent implements OnInit {
 
   onChangeQuantidade() {
     this.hadChangeQuantidade = true;
+  }
+
+  onClickCancelButton() {    
+    this.route.navigate(['casamento/'+ this.casamentoId])
   }
 
 }
