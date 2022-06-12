@@ -16,7 +16,7 @@ export class CasamentoService {
 
   getPartnerName(id:string){
     console.log('getPartnerName - CasamentoService');
-    console.log('Valor do path:')
+    console.log('id:', id)
     console.log(this.path+id);
     return this.http.get<any>(this.path+id);
   }
@@ -45,7 +45,7 @@ export class CasamentoService {
   }
 
   getUserId(userId:string){
-    console.log('Método getUserId: ')
+    console.log('id',userId)   
     return this.http.get<any>(this.userPath+userId)
   }
 
@@ -70,6 +70,11 @@ export class CasamentoService {
         console.log(id)        
       }
     )
+  }
+
+  getUserIdByCasamentoId(casamentoId:string){
+    //this.http.get<any>('http://localhost:3000/casamento/'+casamentoId)    
+    return this.http.get<any>(this.path+casamentoId)
   }
 
 }

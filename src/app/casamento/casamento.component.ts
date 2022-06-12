@@ -33,6 +33,7 @@ export class CasamentoComponent implements OnInit {
 
   //Variáveis locais
   userId: string = '';  
+  userIdNumber: number = 0;  
   casamentoId: string = '';  
   rootPath: string = '/home/';
   inviteePath: string = 'http://localhost:3000/convidados/';
@@ -46,6 +47,7 @@ export class CasamentoComponent implements OnInit {
   hadChange2: boolean = false;
   dataSource: InviteeInterface[] = [];
   casamento: string = '';
+  errorMessage: string = ''
 
   constructor (
     private loggedUser: LoginComponent
@@ -56,8 +58,8 @@ export class CasamentoComponent implements OnInit {
     , private InviteeService: ConvidadosService
     , private http:HttpClient
     ) {
-      this.userId = this.router.snapshot.params['userId'];
-      this.casamentoId = this.router.snapshot.params['userId'];
+      //this.userId = this.router.snapshot.params['userId'];      
+      this.casamentoId = this.router.snapshot.params['userId'];      
     }
 
   ngOnInit() {    
@@ -70,38 +72,26 @@ export class CasamentoComponent implements OnInit {
     this.formPartner2 = this.formBuilder.group({
       noivo2: [null]      
     });
-    
-    this.service.getPartnerName(this.userId).subscribe(
-     (a:any) => {this.noivo1 = a.noivo1; this.noivo2 = a.noivo2}
+
+    this.service.getUserIdByCasamentoId(this.casamentoId).subscribe(
+      (res:any) => {this.userId = res.idUser;}
     )
 
-    //this.service.getCasamentoId(this.userId).subscribe(
     this.service.getUserId(this.userId).subscribe(
-      res => {        
-        console.log('Entrando na rotina ngOnInit - getCasamentoId')
-        this.casamento = res.idCasamento
-        console.log(this.casamento)
-        console.log(res.idCasamento)
-        this.service.getInviteesByCasamentoId(this.casamento).subscribe(
-            (invitee => {
-              console.log('Resgatando lista de convidados')              
-              this.dataSource = invitee
-              console.log(this.dataSource)
-              console.log(invitee)
-              //this.dataSource = new MatTableDataSource<InviteeInterface[]>(invitee)
-              //console.log(this.dataSource.filteredData)
-          }))    
-       }
-    )  
-    console.log('Finalizada a rotina ngOnInit - getCasamentoId')
-    
-    this.http.get<any>('http://localhost:3000/casamento/'+this.casamentoId).subscribe(
-      res => {this.userId = res.idUser}
-    )
+      res => {     
+        this.service.getPartnerName(this.userId).subscribe(
+            (a:any) => {this.noivo1 = a.noivo1; this.noivo2 = a.noivo2;}
+         )
+        }
+    )    
+
+    this.service.getInviteesByCasamentoId(this.casamentoId).subscribe(
+      (invitee => {this.dataSource = invitee}))   
+
   }
 
   addRow() {
-    this.route.navigate(['/convidado'],{queryParams: {idCasamento:this.casamento}})
+    this.route.navigate(['/convidado'],{queryParams: {idCasamento:this.casamentoId}})
     /*const newRow = {"id":0,"idCasamento":0,"nome":"","quantidade":0, isEdit: true}
     this.dataSource = [newRow, ...this.dataSource];    */
   }
@@ -163,8 +153,7 @@ export class CasamentoComponent implements OnInit {
 
   onEditConvidado(id: number, nome: string, quantidade: number) {
         
-    this.formPatchInvitees = this.formBuilder.group({
-      idCasamento: id,
+    this.formPatchInvitees = this.formBuilder.group({      
       nome: nome,
       quantidade: quantidade
     })

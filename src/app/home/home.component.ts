@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
       res => {        
         this.casamentoId = res.id
         this.updateUser(this.casamentoId)    
-        //this.router.navigate([this.rootPath+this.casamentoId])
+        this.router.navigate([this.rootPath+this.casamentoId])
       }
     )
     
@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
     })
     
     this.CasamentoService.patchUserCasamentoStatus(this.userId, this.frm).subscribe()
-    this.router.navigate([this.rootPath+this.userId])
+    //this.router.navigate([this.rootPath+this.userId])
   }
 
 }
