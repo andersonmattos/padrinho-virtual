@@ -75,18 +75,25 @@ export class CasamentoComponent implements OnInit {
      (a:any) => {this.noivo1 = a.noivo1; this.noivo2 = a.noivo2}
     )
 
-    this.service.getCasamentoId(this.userId).subscribe(
-      res => {
-        //debugger
+    //this.service.getCasamentoId(this.userId).subscribe(
+    this.service.getUserId(this.userId).subscribe(
+      res => {        
+        console.log('Entrando na rotina ngOnInit - getCasamentoId')
         this.casamento = res.idCasamento
+        console.log(this.casamento)
+        console.log(res.idCasamento)
         this.service.getInviteesByCasamentoId(this.casamento).subscribe(
             (invitee => {
+              console.log('Resgatando lista de convidados')              
               this.dataSource = invitee
+              console.log(this.dataSource)
+              console.log(invitee)
               //this.dataSource = new MatTableDataSource<InviteeInterface[]>(invitee)
               //console.log(this.dataSource.filteredData)
           }))    
        }
     )  
+    console.log('Finalizada a rotina ngOnInit - getCasamentoId')
     
     this.http.get<any>('http://localhost:3000/casamento/'+this.casamentoId).subscribe(
       res => {this.userId = res.idUser}
