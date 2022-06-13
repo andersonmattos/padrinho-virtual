@@ -79,7 +79,7 @@ export class CasamentoComponent implements OnInit {
 
     this.service.getUserId(this.userId).subscribe(
       res => {     
-        this.service.getPartnerName(this.userId).subscribe(
+        this.service.getPartnerName(this.casamentoId).subscribe(
             (a:any) => {this.noivo1 = a.noivo1; this.noivo2 = a.noivo2;}
          )
         }
@@ -120,11 +120,12 @@ export class CasamentoComponent implements OnInit {
 
     if(this.hadChange1 != false || this.hadChange2 != false){      
       if(this.hadChange1 != false){
-        this.service.updatePartnerName(this.userId,this.formPartner1)        
+        debugger
+        this.service.updatePartnerName(this.casamentoId,this.formPartner1)        
       }
 
       if(this.hadChange2 != false){
-        this.service.updatePartnerName(this.userId,this.formPartner2)        
+        this.service.updatePartnerName(this.casamentoId,this.formPartner2)        
       }
       alert("Atualizado com sucesso!"); 
     }

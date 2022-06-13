@@ -21,13 +21,13 @@ export class CasamentoService {
     return this.http.get<any>(this.path+id);
   }
 
-  updatePartnerName(userId:string, casamentoForm:FormGroup){
+  updatePartnerName(casamentoId:string, casamentoForm:FormGroup){
     console.log('Usando método updatePartnerName do service Casamento');
     console.log(casamentoForm.value);
-    console.log(this.path+userId);    
+    console.log(this.path+casamentoId);    
     
     console.log('Executando patch');
-    return this.http.patch<any>(this.path+userId,casamentoForm.value).subscribe(
+    return this.http.patch<any>(this.path+casamentoId,casamentoForm.value).subscribe(
       res => {
                        
       }
