@@ -119,8 +119,7 @@ export class CasamentoComponent implements OnInit {
     //debugger
 
     if(this.hadChange1 != false || this.hadChange2 != false){      
-      if(this.hadChange1 != false){
-        debugger
+      if(this.hadChange1 != false){        
         this.service.updatePartnerName(this.casamentoId,this.formPartner1)        
       }
 

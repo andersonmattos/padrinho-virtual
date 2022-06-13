@@ -13,8 +13,16 @@
       "email": "user@teste",
       "nome": "user",
       "senha": "123",
-      "temCasamento": 1,
-      "idCasamento": 2
+      "temCasamento": 0,
+      "idCasamento": 0
+    },
+    {
+      "email": "teste@teste",
+      "nome": "Anderson",
+      "senha": "1111",
+      "temCasamento": 0,
+      "id": 4,
+      "idCasamento": 0
     }
   ],
   "casamento": [
@@ -24,12 +32,6 @@
       "noivo1": "Noivo A1",
       "noivo2": "Noivo B",
       "status": 0
-    },
-    {
-      "idUser": "3",
-      "noivo1": "Aa",
-      "noivo2": null,
-      "id": 2
     }
   ],
   "convidados": [

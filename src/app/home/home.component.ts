@@ -103,8 +103,8 @@ export class HomeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {      
       this.http.delete<any>(this.casamentoPath+this.existingCasamentoId).subscribe();
-      alert('Casamento deletado com sucesso')
-      this.router.navigate(['/home/'+this.userId])  
+      this.http.patch<any>(this.userPath+this.userId,{temCasamento:0,idCasamento:0}).subscribe();
+      alert('Casamento deletado com sucesso')      
       window.location.reload();
     });
   }
