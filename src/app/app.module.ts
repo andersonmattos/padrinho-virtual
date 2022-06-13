@@ -22,6 +22,9 @@ import {MatTableModule} from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConvidadosComponent } from './convidados/convidados.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HomeDialogComponent } from './home/home-dialog/home-dialog.component';
+import { HomeDialogDeleteComponent } from './home/home-dialog-delete/home-dialog-delete.component'
 
 
 @NgModule({
@@ -31,7 +34,9 @@ import { ConvidadosComponent } from './convidados/convidados.component';
     PrimeiroCadastroComponent,
     HomeComponent,
     CasamentoComponent,
-    ConvidadosComponent
+    ConvidadosComponent,
+    HomeDialogComponent,
+    HomeDialogDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,8 @@ import { ConvidadosComponent } from './convidados/convidados.component';
     MatTableModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule    
   ],
   providers: [LoginComponent],
   bootstrap: [AppComponent]

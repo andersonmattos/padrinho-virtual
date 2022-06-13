@@ -2,7 +2,9 @@
   <div *ngIf="hasProject == 0" >
     <button mat-raised-button class="button-size" color="black" (click)="onClickNew()">Criar casamento</button>
   </div>
-  <div *ngIf="hasProject == 1">
+  <div *ngIf="hasProject == 1" fxLayout = "column" fxLayoutAlign="center center" fxLayoutGap="25px">
     <button mat-raised-button class="button-size" color="black" (click)="onClickEdit()">Editar casamento</button>
+    <button mat-raised-button class="button-size" color="black" (click)="onClickEnd('0ms', '0ms')">Concluir casamento</button>
+    <button mat-raised-button class="button-size" color="black" (click)="onClickeDelete('0ms', '0ms')">Deletar casamento</button>
   </div>  
 </div>
