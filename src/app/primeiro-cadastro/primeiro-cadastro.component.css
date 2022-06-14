@@ -14,3 +14,8 @@
     color: black;
     opacity: 0.5;
 }
+
+.button-to-far-left {
+    flex: 1 1 auto;
+    justify-content: space-between;
+}

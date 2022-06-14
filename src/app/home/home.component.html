@@ -1,3 +1,12 @@
+<div>
+  <mat-toolbar>
+      <span>Padrinho Virtual</span>
+      <span class="button-to-far-left"></span>              
+      <!--button mat-button (click)="onClickHome()">Voltar</button-->
+      <a mat-button href=" ">Sair</a>
+  </mat-toolbar>
+</div>
+
 <div fxLayout = "column" fxLayoutAlign="center center" fxLayoutGap="25px" class="padding">  
   <div *ngIf="hasProject == 0" >
     <button mat-raised-button class="button-size" color="black" (click)="onClickNew()">Criar casamento</button>

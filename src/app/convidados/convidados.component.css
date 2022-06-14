@@ -15,4 +15,9 @@
 
 .example-button-row .mat-button-base {
     margin: 8px 8px 8px 0;
-  }
+}
+
+.button-to-far-left {
+    flex: 1 1 auto;
+    justify-content: space-between;
+}
